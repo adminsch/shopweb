@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="login" class="cn.action.UserAction" method="login">
+			<result>/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="exit" class="cn.action.UserAction" method="exit">
+			<result>/WEB-INF/jsp/loginout.jsp</result>
+		</action>
+
+
+	</package>
+
+<!-- 需要验证是否登录的action在此package中 -->
+	<package name="checklogin" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="checklogin" class="cn.service.CheckLoginInterceptor" />
+			<interceptor-stack name="login">
+				<interceptor-ref name="checklogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 拦截此package中的action -->
+		<default-interceptor-ref name="login" />
+		
+		<action name="index" class="cn.action.UserAction" method="shop">
+			<result>/WEB-INF/jsp/index.jsp</result>
+			<result name="login" type="redirect">exit</result>
+		</action>
+		
+	</package>
+
+</struts>
