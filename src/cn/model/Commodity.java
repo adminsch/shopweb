@@ -1,5 +1,8 @@
 package cn.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Commodity {
 	private int cid;
 	private String cname;
@@ -11,6 +14,7 @@ public class Commodity {
 	private int stock;
 	private int record;
 	private String cpicture;
+	private Set<Message> messages=new HashSet<Message>();
 	public int getCid() {
 		return cid;
 	}
@@ -71,15 +75,20 @@ public class Commodity {
 	public void setCpicture(String cpicture) {
 		this.cpicture = cpicture;
 	}
+	public Set<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
+	}
 	@Override
 	public String toString() {
 		return "Commodity [cid=" + cid + ", cname=" + cname + ", price="
 				+ price + ", discount=" + discount + ", store=" + store
 				+ ", cdesc=" + cdesc + ", faddr=" + faddr + ", stock=" + stock
-				+ ", record=" + record + ", cpicture=" + cpicture + "]";
+				+ ", record=" + record + ", cpicture=" + cpicture
+				+ ", messages=" + messages + "]";
 	}
-	
-	
 	
 	
 }

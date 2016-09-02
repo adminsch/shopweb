@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-28 18:15:56 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-2 22:22:41 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.model.Commodity" table="COMMODITY">
         <id name="cid" type="int">
@@ -18,7 +18,7 @@
             <column name="DISCOUNT" />
         </property>
         <many-to-one name="store" class="cn.model.Store" fetch="join">
-            <column name="sid" />
+            <column name="STORE" />
         </many-to-one>
         <property name="cdesc" type="java.lang.String">
             <column name="CDESC" />
@@ -35,5 +35,11 @@
         <property name="cpicture" type="java.lang.String">
             <column name="CPICTURE" />
         </property>
+        <set name="messages" table="MESSAGE" inverse="false" lazy="true">
+            <key>
+                <column name="CID" />
+            </key>
+            <one-to-many class="cn.model.Message" />
+        </set>
     </class>
 </hibernate-mapping>

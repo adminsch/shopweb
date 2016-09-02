@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-28 18:21:21 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-2 21:56:24 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.model.Goods" table="GOODS">
         <id name="gid" type="int">
             <column name="GID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="gname" type="java.lang.String">
             <column name="GNAME" />
@@ -30,7 +30,7 @@
             <column name="STATUS" />
         </property>
         <many-to-one name="user" class="cn.model.User" fetch="join">
-            <column name="uid" />
+            <column name="Uid" />
         </many-to-one>
     </class>
 </hibernate-mapping>

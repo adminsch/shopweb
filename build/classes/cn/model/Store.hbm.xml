@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-28 17:53:32 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-2 21:56:24 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.model.Store" table="STORE">
         <id name="sid" type="int">
@@ -20,5 +20,17 @@
         <property name="spicture" type="java.lang.String">
             <column name="SPICTURE" />
         </property>
+        <set name="commoditys" table="COMMODITY" inverse="true" lazy="true">
+            <key>
+                <column name="SID" />
+            </key>
+            <one-to-many class="cn.model.Commodity" />
+        </set>
+        <set name="orders" table="ORDER" inverse="true" lazy="true">
+            <key>
+                <column name="SID" />
+            </key>
+            <one-to-many class="cn.model.Order" />
+        </set>
     </class>
 </hibernate-mapping>

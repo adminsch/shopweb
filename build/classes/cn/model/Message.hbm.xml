@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-28 18:18:02 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-2 21:56:24 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.model.Message" table="MESSAGE">
         <id name="mid" type="int">
             <column name="MID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <many-to-one name="user" class="cn.model.User" fetch="join">
-            <column name="uid" />
+            <column name="Uid" />
         </many-to-one>
         <property name="content" type="java.lang.String">
             <column name="CONTENT" />
@@ -18,7 +18,7 @@
             <column name="MDATE" />
         </property>
         <many-to-one name="commodity" class="cn.model.Commodity" fetch="join">
-            <column name="cid" />
+            <column name="Cid" />
         </many-to-one>
     </class>
 </hibernate-mapping>

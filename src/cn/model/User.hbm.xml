@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-28 18:29:53 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-2 21:56:24 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="cn.model.User" table="USER">
         <id name="uid" type="int">
@@ -23,11 +23,35 @@
         <property name="phone" type="java.lang.String">
             <column name="PHONE" />
         </property>
-        <set name="addrs" inverse="true" table="ADDRESS">
+        <set name="addrs" table="ADDRESS" inverse="true" lazy="true">
             <key>
                 <column name="UID" />
             </key>
             <one-to-many class="cn.model.Address" />
+        </set>
+        <set name="stores" table="STORE" inverse="true" lazy="true">
+            <key>
+                <column name="UID" />
+            </key>
+            <one-to-many class="cn.model.Store" />
+        </set>
+        <set name="orders" table="ORDER" inverse="true" lazy="true">
+            <key>
+                <column name="UID" />
+            </key>
+            <one-to-many class="cn.model.Order" />
+        </set>
+        <set name="goodss" table="GOODS" inverse="true" lazy="true">
+            <key>
+                <column name="UID" />
+            </key>
+            <one-to-many class="cn.model.Goods" />
+        </set>
+        <set name="messages" table="MESSAGE" inverse="false" lazy="true">
+            <key>
+                <column name="UID" />
+            </key>
+            <one-to-many class="cn.model.Message" />
         </set>
     </class>
 </hibernate-mapping>
