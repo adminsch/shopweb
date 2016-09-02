@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-28 18:15:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.model.Order" table="ORDER">
+        <id name="oid" type="int">
+            <column name="OID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="commodity" class="cn.model.Commodity" fetch="join">
+            <column name="cid" />
+        </many-to-one>
+        <property name="batchno" type="java.lang.String">
+            <column name="BATCHNO" />
+        </property>
+        <many-to-one name="user" class="cn.model.User" fetch="join">
+            <column name="uid" />
+        </many-to-one>
+        <many-to-one name="store" class="cn.model.Store" fetch="join">
+            <column name="sid" />
+        </many-to-one>
+        <property name="saddr" type="java.lang.String">
+            <column name="SADDR" />
+        </property>
+        <property name="faddr" type="java.lang.String">
+            <column name="FADDR" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" />
+        </property>
+    </class>
+</hibernate-mapping>

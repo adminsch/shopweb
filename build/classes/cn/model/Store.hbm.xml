@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-28 17:53:32 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.model.Store" table="STORE">
+        <id name="sid" type="int">
+            <column name="SID" />
+            <generator class="native" />
+        </id>
+        <property name="sname" type="java.lang.String">
+            <column name="SNAME" />
+        </property>
+        <many-to-one name="user" class="cn.model.User" fetch="join">
+            <column name="uid" />
+        </many-to-one>
+        <property name="sdesc" type="java.lang.String">
+            <column name="SDESC" />
+        </property>
+        <property name="spicture" type="java.lang.String">
+            <column name="SPICTURE" />
+        </property>
+    </class>
+</hibernate-mapping>

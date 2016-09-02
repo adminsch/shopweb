@@ -1,5 +1,9 @@
 package cn.model;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class User {
 	private int uid;
 	private String name;
@@ -7,6 +11,7 @@ public class User {
 	private int role;
 	private int integral;
 	private String phone;
+	private Set<Address> addrs=new HashSet<Address>();
 	public int getUid() {
 		return uid;
 	}
@@ -43,12 +48,19 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public void setAddrs(Set<Address> addrs) {
+		this.addrs = addrs;
+	}
+	public Set<Address> getAddrs() {
+		return addrs;
+	}
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", name=" + name + ", password=" + password
 				+ ", role=" + role + ", integral=" + integral + ", phone="
-				+ phone + "]";
+				+ phone + ", addrs=" + addrs + "]";
 	}
+	
 	
 
 }

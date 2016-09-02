@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-8-27 13:12:33 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-8-28 18:29:53 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="cn.model.User" table="user">
+    <class name="cn.model.User" table="USER">
         <id name="uid" type="int">
             <column name="UID" />
             <generator class="native" />
@@ -23,5 +23,11 @@
         <property name="phone" type="java.lang.String">
             <column name="PHONE" />
         </property>
+        <set name="addrs" inverse="true" table="ADDRESS">
+            <key>
+                <column name="UID" />
+            </key>
+            <one-to-many class="cn.model.Address" />
+        </set>
     </class>
 </hibernate-mapping>

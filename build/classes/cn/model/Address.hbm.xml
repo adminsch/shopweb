@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-8-28 18:31:46 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.model.Address" table="ADDRESS">
+        <id name="aid" type="int">
+            <column name="AID" />
+            <generator class="native" />
+        </id>
+        <property name="addr" type="java.lang.String">
+            <column name="ADDR" />
+        </property>
+        <many-to-one name="user" class="cn.model.User" fetch="select">
+            <column name="uid" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
