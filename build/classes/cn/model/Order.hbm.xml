@@ -26,9 +26,6 @@
         <many-to-one name="user" class="cn.model.User" fetch="join">
             <column name="Uid" />
         </many-to-one>
-        <many-to-one name="store" class="cn.model.Store" fetch="join">
-            <column name="Sid" />
-        </many-to-one>
         <property name="saddr" type="java.lang.String">
             <column name="SADDR" />
         </property>

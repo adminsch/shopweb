@@ -12,7 +12,6 @@ public class Order {
 	private int cnum;
 	private String batchno;
 	private User user;
-	private Store store;
 	private String saddr;
 	private String faddr;
 	private int status;
@@ -60,12 +59,6 @@ public class Order {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Store getStore() {
-		return store;
-	}
-	public void setStore(Store store) {
-		this.store = store;
-	}
 	public String getSaddr() {
 		return saddr;
 	}
@@ -94,7 +87,7 @@ public class Order {
 	public String toString() {
 		return "Order [oid=" + oid + ", cname=" + cname + ", cprice=" + cprice
 				+ ", ctotal=" + ctotal + ", cnum=" + cnum + ", batchno="
-				+ batchno + ", user=" + user + ", store=" + store + ", saddr="
+				+ batchno + ", user=" + user + ", saddr="
 				+ saddr + ", faddr=" + faddr + ", status=" + status
 				+ ", batchtotle=" + batchtotle + "]";
 	}

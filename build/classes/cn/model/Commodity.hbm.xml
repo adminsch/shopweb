@@ -17,9 +17,6 @@
         <property name="discount" type="double">
             <column name="DISCOUNT" />
         </property>
-        <many-to-one name="store" class="cn.model.Store" fetch="join">
-            <column name="STORE" />
-        </many-to-one>
         <property name="cdesc" type="java.lang.String">
             <column name="CDESC" />
         </property>

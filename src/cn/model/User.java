@@ -12,7 +12,6 @@ public class User {
 	private int integral;
 	private String phone;
 	private Set<Address> addrs=new HashSet<Address>();
-	private Set<Store> stores=new HashSet<Store>();
 	private Set<Order> orders=new HashSet<Order>();
 	private Set<Goods> goodss=new HashSet<Goods>();
 	private Set<Message> messages=new HashSet<Message>();
@@ -58,12 +57,6 @@ public class User {
 	public void setAddrs(Set<Address> addrs) {
 		this.addrs = addrs;
 	}
-	public Set<Store> getStores() {
-		return stores;
-	}
-	public void setStores(Set<Store> stores) {
-		this.stores = stores;
-	}
 	public Set<Order> getOrders() {
 		return orders;
 	}
@@ -86,7 +79,7 @@ public class User {
 	public String toString() {
 		return "User [uid=" + uid + ", name=" + name + ", password=" + password
 				+ ", role=" + role + ", integral=" + integral + ", phone="
-				+ phone + ", addrs=" + addrs + ", stores=" + stores
+				+ phone + ", addrs=" + addrs 
 				+ ", orders=" + orders + ", goodss=" + goodss + ", messages="
 				+ messages + "]";
 	}

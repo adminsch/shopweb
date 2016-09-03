@@ -8,7 +8,6 @@ public class Commodity {
 	private String cname;
 	private double price;
 	private double discount;
-	private Store store;
 	private String cdesc;
 	private String faddr;
 	private int stock;
@@ -38,12 +37,6 @@ public class Commodity {
 	}
 	public void setDiscount(double discount) {
 		this.discount = discount;
-	}
-	public Store getStore() {
-		return store;
-	}
-	public void setStore(Store store) {
-		this.store = store;
 	}
 	public String getCdesc() {
 		return cdesc;
@@ -84,7 +77,7 @@ public class Commodity {
 	@Override
 	public String toString() {
 		return "Commodity [cid=" + cid + ", cname=" + cname + ", price="
-				+ price + ", discount=" + discount + ", store=" + store
+				+ price + ", discount=" + discount 
 				+ ", cdesc=" + cdesc + ", faddr=" + faddr + ", stock=" + stock
 				+ ", record=" + record + ", cpicture=" + cpicture
 				+ ", messages=" + messages + "]";

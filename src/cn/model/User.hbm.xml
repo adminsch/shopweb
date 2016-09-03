@@ -29,12 +29,6 @@
             </key>
             <one-to-many class="cn.model.Address" />
         </set>
-        <set name="stores" table="STORE" inverse="true" lazy="true">
-            <key>
-                <column name="UID" />
-            </key>
-            <one-to-many class="cn.model.Store" />
-        </set>
         <set name="orders" table="ORDER" inverse="true" lazy="true">
             <key>
                 <column name="UID" />
