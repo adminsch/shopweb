@@ -202,7 +202,7 @@
 		cancelPlace:	'left',
 		hintList:		['bad', 'poor', 'regular', 'good', 'gorgeous'],
 		number:			5,
-		path:			'img/',
+		path:			'page/img/',
 		readOnly:		false,
 		scoreName:		'score',
 		showCancel:		false,

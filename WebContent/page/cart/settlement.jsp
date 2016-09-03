@@ -1,60 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>结算</title>
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../css/settlement.css" type="text/css" media="all" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/slider.js"></script>
+<link rel="stylesheet" href="page/css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="page/css/settlement.css" type="text/css" media="all" />
+<script type="text/javascript" src="page/js/jquery.js"></script>
+<script type="text/javascript" src="page/js/slider.js"></script>
 </head>
 
 <body bgcolor="#e0d6df">
-  <div id="header">
-    <div class="online-service">
-      <p><img src="../img/ico-online-service.gif" width="71" height="28" alt="在线客服" /></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-    </div>
-    <div class="header-top">
-    <div class="logo-container"><img src="../img/logo-fujia.png" width="197" height="51" alt="logo" /></div>
-    <div class="header-nav">
-      <ul>
-        <li><a href="../index.html">首页</a></li>
-        <li><a href="../information/information.html">资讯动态</a></li>
-        <li><a href="../product/product.html">产品分类</a></li>
-        <li><a href="../person/record.html">我的芙佳</a></li>
-        <li><a href="cart.html">购物车</a></li>
-        <li><a href="../contact.html">联系我们</a></li>
-      </ul>
-    </div>
-    </div>
-    <div class="header-bottom">
-      <ul class="hot-search">
-        <li class="search-title">热门搜索：</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-      </ul>
-      <div class="search-container">
-        <input type="text" onfocus="this.value='';$(this).css('color','#313131');" value="请输入商品名称或输入关键字" />
-        <a href="javascript:;"><img src="../img/ico-search.gif" alt="搜索" width="64" height="23" /></a>
-      </div>
-    </div>
-  </div>
+   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div id="content">
       <div class="settlement-message">
@@ -118,7 +77,7 @@
                       </dl>
                     </li>
                   </ul>
-                  <p class="submit-address"><a href="javascript:;"><img src="../img/cart/btn-save.gif" width="64" height="22" alt="保存" /></a></p>
+                  <p class="submit-address"><a href="javascript:;"><img src="page/img/cart/btn-save.gif" width="64" height="22" alt="保存" /></a></p>
                 </form>
               </div>
               <script>
@@ -138,13 +97,13 @@
             <li class="total">小计</li>
           </ul>
           <ul class="confirm-content">
-            <li class="name"><a href="../product/details.html"><img src="../img/cart/img-confirm01.jpg" width="80" height="80" alt="蚕豆" /><span>【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</span></a></li>
+            <li class="name"><a href="page/product/details.html"><img src="page/img/cart/img-confirm01.jpg" width="80" height="80" alt="蚕豆" /><span>【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</span></a></li>
             <li class="price">199.00</li>
             <li class="count">1</li>
             <li class="total">199.00</li>
           </ul>
           <ul class="confirm-content">
-            <li class="name"><a href="../product/details.html"><img src="../img/cart/img-confirm01.jpg" width="80" height="80" alt="蚕豆" /><span>【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</span></a></li>
+            <li class="name"><a href="page/product/details.html"><img src="page/img/cart/img-confirm01.jpg" width="80" height="80" alt="蚕豆" /><span>【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</span></a></li>
             <li class="price">199.00</li>
             <li class="count">1</li>
             <li class="total">199.00</li>
@@ -176,38 +135,38 @@
       <div class="rec-slider">
       <ul>
       <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
         <li>
-          <p class="recom-img"><a href="../product/details.html"><img src="../img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
-          <p class="recom-name"><a href="../product/details.html">猕猴桃（新品上市）</a></p>
+          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
+          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
           <p class="recom-price">￥5.60/斤</p>
         </li>
       </ul>

@@ -10,16 +10,21 @@
 
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="login" class="cn.action.UserAction" method="login">
-			<result>/WEB-INF/jsp/login.jsp</result>
+			<result>/page/login.jsp</result>
 		</action>
-		<action name="exit" class="cn.action.UserAction" method="exit">
-			<result>/WEB-INF/jsp/loginout.jsp</result>
+		<action name="index" class="cn.action.CommodityAction" method="index">
+			<result>/page/index.jsp</result>
 		</action>
-
+		<action name="regist" class="cn.action.UserAction" method="regist">
+			<result>/page/regist.jsp</result>
+		</action>
+		<action name="xbox" class="cn.action.GoodsAction" method="xbox">
+			<result>/page/xbox.jsp</result>
+		</action>
 
 	</package>
 
-<!-- 需要验证是否登录的action在此package中 -->
+	<!-- 需要验证是否登录的action在此package中 -->
 	<package name="checklogin" namespace="/" extends="struts-default">
 		<interceptors>
 			<interceptor name="checklogin" class="cn.service.CheckLoginInterceptor" />
@@ -30,12 +35,48 @@
 		</interceptors>
 		<!-- 拦截此package中的action -->
 		<default-interceptor-ref name="login" />
-		
-		<action name="index" class="cn.action.UserAction" method="shop">
-			<result>/WEB-INF/jsp/index.jsp</result>
-			<result name="login" type="redirect">exit</result>
+
+		<action name="address" class="cn.action.UserAction" method="address">
+			<result>/page/person/address.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
 		</action>
-		
+		<action name="pinfo" class="cn.action.UserAction" method="pinfo">
+			<result>/page/person/data.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="discuss" class="cn.action.CommodityAction" method="discuss">
+			<result>/page/person/discuss.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="integral" class="cn.action.UserAction" method="integral">
+			<result>/page/person/integral.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="order" class="cn.action.CommodityAction" method="order">
+			<result>/page/person/order.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="record" class="cn.action.CommodityAction" method="record">
+			<result>/page/person/record.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="detail" class="cn.action.CommodityAction" method="detail">
+			<result>/page/product/details.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="cart" class="cn.action.CommodityAction" method="cart">
+			<result>/page/cart/cart.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="pay" class="cn.action.CommodityAction" method="pay">
+			<result>/page/cart/pay.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+		<action name="settlement" class="cn.action.CommodityAction" method="settlement">
+			<result>/page/cart/settlement.jsp</result>
+			<result name="login" type="redirect">login</result><!-- 验证未通过进入登录页面 -->
+		</action>
+
 	</package>
 
 </struts>

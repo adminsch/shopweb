@@ -14,12 +14,12 @@ public class UserAction extends ActionSupport {
 	private UserService userService;
 
 	public String login() {
-		ServletActionContext.getRequest().getSession()
-				.setAttribute("user", "cc");
+//		ServletActionContext.getRequest().getSession()
+//				.setAttribute("user", "cc");
 		return SUCCESS;
 	}
 
-	public String shop() {
+	public String regist() {
 
 		return SUCCESS;
 	}
@@ -28,5 +28,19 @@ public class UserAction extends ActionSupport {
 
 		return SUCCESS;
 	}
+	
+	public String address() {
+
+		return SUCCESS;
+	}
+	public String pinfo() {
+
+		return SUCCESS;
+	}
+	public String integral() {
+
+		return SUCCESS;
+	}
+	
 
 }

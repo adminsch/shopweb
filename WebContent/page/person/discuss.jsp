@@ -1,62 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>购买记录</title>
-<link rel="stylesheet" href="../css/common.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../css/discuss.css" type="text/css" media="all" />
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
-<script type="text/javascript" src="../js/slider.js"></script>
-<script type="text/javascript" src="../js/jquery.raty.min.js"></script>
+<link rel="stylesheet" href="page/css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="page/css/discuss.css" type="text/css" media="all" />
+<script type="text/javascript" src="page/js/jquery.js"></script>
+<script type="text/javascript" src="page/js/common.js"></script>
+<script type="text/javascript" src="page/js/slider.js"></script>
+<script type="text/javascript" src="page/js/jquery.raty.min.js"></script>
 </head>
 
 <body bgcolor="#e0d6df">
-  <div id="header">
-    <div class="online-service">
-      <p><img src="../img/ico-online-service.gif" width="71" height="28" alt="在线客服" /></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-    </div>
-    <div class="header-top">
-    <div class="logo-container"><img src="../img/logo-fujia.png" width="197" height="51" alt="logo" /></div>
-    <div class="header-nav">
-      <ul>
-        <li><a href="../index.html">首页</a></li>
-        <li><a href="../information/information.html">资讯动态</a></li>
-        <li><a href="../product/product.html">产品分类</a></li>
-        <li><a href="record.html">我的芙佳</a></li>
-        <li><a href="../cart/cart.html">购物车</a></li>
-        <li><a href="../contact.html">联系我们</a></li>
-      </ul>
-    </div>
-    </div>
-    <div class="header-bottom">
-      <ul class="hot-search">
-        <li class="search-title">热门搜索：</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-        <li><a href="../product/details.html">安岳柠檬</a></li>
-      </ul>
-      <div class="search-container">
-        <input type="text" onfocus="this.value='';$(this).css('color','#313131');" value="请输入商品名称或输入关键字" />
-        <a href="javascript:;"><img src="../img/ico-search.gif" alt="搜索" width="64" height="23" /></a>
-      </div>
-    </div>
-  </div>
+   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div id="content">
       <h1 class="title">宝贝评价</h1>
@@ -64,7 +23,7 @@
         <div class="discuss-content">
         <dl>
           <dt>
-            <p><a href="../product/details.html"><img src="../img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
+            <p><a href="../product/details.html"><img src="page/img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
             <p><a href="../product/details.html">蔬菜蔬菜蔬菜蔬菜</a></p>
           </dt>
           <dd>
@@ -114,7 +73,7 @@
         <div class="discuss-content">
         <dl>
           <dt>
-            <p><a href="../product/details.html"><img src="../img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
+            <p><a href="../product/details.html"><img src="page/img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
             <p><a href="../product/details.html">蔬菜蔬菜蔬菜蔬菜</a></p>
           </dt>
           <dd>
@@ -164,7 +123,7 @@
         <div class="discuss-content">
         <dl>
           <dt>
-            <p><a href="../product/details.html"><img src="../img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
+            <p><a href="../product/details.html"><img src="page/img/discuss/img-discuss01.jpg" width="130" height="129" alt="" /></a></p>
             <p><a href="../product/details.html">蔬菜蔬菜蔬菜蔬菜</a></p>
           </dt>
           <dd>

@@ -1,13 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>首页</title>
-<link rel="stylesheet" href="css/common.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/index.css" type="text/css" media="all" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/fadebanner.js"></script>
+<link rel="stylesheet" href="page/css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="page/css/index.css" type="text/css" media="all" />
+<script type="text/javascript" src="page/js/jquery.js"></script>
+<script type="text/javascript" src="page/js/fadebanner.js"></script>
 <!--[if IE 8]> 
   <style type="text/css">
     .kinds-det .det-content a {
@@ -18,63 +22,11 @@
 </head>
 
 <body bgcolor="#e0d6df">
-  <div id="header">
-    <div class="online-service">
-      <p><img src="img/ico-online-service.gif" width="71" height="28" alt="在线客服" /></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-      <p><a target="blank" href="http://wpa.qq.com/msgrd?V=1&Uin=811052479&Site="当鼠标移动上来显示的文字"&Menu=yes">
-      <img border="0" src="http://wpa.qq.com/pa?p=1:811052479:10" alt="">
-      </a></p>
-    </div>
-    <div class="header-top">
-    <div class="logo-container"><img src="img/logo-fujia.png" width="197" height="51" alt="logo" /></div>
-    <div class="header-nav">
-      <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="information/information.html">资讯动态</a></li>
-        <li>
-          <a href=".product-kinds" class="dropdown">产品分类</a>
-          <ul class="product-kinds">
-            <li><a href="product/product.html">新鲜水果</a></li>
-            <li><a href="product/product.html">有机蔬菜</a></li>
-            <li><a href="product/product.html">日用百货</a></li>
-          </ul>
-        </li>
-        <li><a href="person/record.html">我的芙佳</a></li>
-        <li><a href="cart/cart.html">购物车</a></li>
-        <li><a href="contact.html">联系我们</a></li>
-        <li class="clear"></li>
-      </ul>
-    </div>
-    </div>
-    <div class="header-bottom">
-      <ul class="hot-search">
-        <li class="search-title">热门搜索：</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-        <li><a href="product/details.html">安岳柠檬</a></li>
-      </ul>
-      <div class="search-container">
-        <input type="text" onfocus="this.value='';$(this).css('color','#313131');" value="请输入商品名称或输入关键字" />
-        <a href="javascript:;"><img src="img/ico-search.gif" alt="搜索" width="64" height="23" /></a>
-      </div>
-    </div>
-  </div>
+   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div id="nav-side">
       <div class="login-container">
-        <p class="login-title"><img src="img/title-login.gif" alt="会员登入" width="147" height="23" /></p>
+        <p class="login-title"><img src="page/img/title-login.gif" alt="会员登入" width="147" height="23" /></p>
         <form>
           <ul class="login-input">
             <li>
@@ -88,20 +40,20 @@
           </ul>
           <p class="f-password"><a href="javascript:;">忘记密码？</a></p>
           <p class="login-btn">
-            <a href="javascript:;"><img src="img/btn-login.gif" width="61" height="19" alt="登入" /></a>
-            <a href="regist.html"><img src="img/btn-regist.gif" width="61" height="19" alt="注册" /></a>
+            <a href="javascript:;"><img src="page/img/btn-login.gif" width="61" height="19" alt="登入" /></a>
+            <a href="regist.html"><img src="page/img/btn-regist.gif" width="61" height="19" alt="注册" /></a>
           </p>
         </form>
       </div>
       <div class="login-container">
         <dl class="login-suc">
-          <dt><img src="img/img-photo.jpg" width="62" height="62" alt="头像" /></dt>
+          <dt><img src="page/img/img-photo.jpg" width="62" height="62" alt="头像" /></dt>
           <dd>
             <p class="user-name">张三丰</p>
             <p>您好！</p>
           </dd>
         </dl>
-        <p class="my-fujia"><a href="person/record.html"><img src="img/btn-personal.gif" width="89" height="21" alt="我的芙佳" /></a></p>
+        <p class="my-fujia"><a href="page/person/record.html"><img src="page/img/btn-personal.gif" width="89" height="21" alt="我的芙佳" /></a></p>
       </div>
       <div class="pro-kinds">
         <h1 class="kinds-tit">产品分类</h1>
@@ -179,15 +131,15 @@
         <div class="hot-cont">
           <ul class="hot-list">
             <li>
-              <p><a href="product/details.html"><img src="img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
+              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
               <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
             </li>
             <li>
-              <p><a href="product/details.html"><img src="img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
+              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
               <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
             </li>
             <li>
-              <p><a href="product/details.html"><img src="img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
+              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
               <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
             </li>
           </ul>
@@ -197,11 +149,11 @@
     <div id="content">
       <div class="banner-cont">
         <ul class="fade-banner" control-fade="banner-control">
-          <li><a href="product/product.html"><img src="img/bnr-photo01.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="img/bnr-photo02.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="img/bnr-photo03.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="img/bnr-photo04.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="img/bnr-photo05.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+          <li><a href="product/product.html"><img src="page/img/bnr-photo01.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+          <li><a href="product/product.html"><img src="page/img/bnr-photo02.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+          <li><a href="product/product.html"><img src="page/img/bnr-photo03.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+          <li><a href="product/product.html"><img src="page/img/bnr-photo04.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+          <li><a href="product/product.html"><img src="page/img/bnr-photo05.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
         </ul>
         <ul class="banner-control">
           <li class="active"></li>
@@ -214,9 +166,9 @@
       <div class="promotion-area">
         <h1 class="title">促销专区</h1>
         <ul class="promotion-list">
-          <li><a href="product/details.html"><img src="img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
-          <li><a href="product/details.html"><img src="img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
-          <li><a href="product/details.html"><img src="img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
+          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
+          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
+          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
         </ul>
       </div>
       <div class="product-show">
@@ -227,32 +179,32 @@
         </h1>
         <ul class="show-list">
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
@@ -266,22 +218,22 @@
         </h1>
         <ul class="show-list">
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
@@ -295,22 +247,22 @@
         </h1>
         <ul class="show-list">
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
           <li>
-            <p><a href="product/details.html"><img src="img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
+            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
             <p class="show-name">水果</p>
             <p class="show-price"><a href="product/details.html">RMB 100</a></p>
           </li>
@@ -324,16 +276,16 @@
         </h1>
         <ul class="show-list">
           <li>
-            <p><a href="javascript:;"><img src="img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
+            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
           </li>
           <li>
-            <p><a href="javascript:;"><img src="img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
+            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
           </li>
           <li>
-            <p><a href="javascript:;"><img src="img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
+            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
           </li>
           <li>
-            <p><a href="javascript:;"><img src="img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
+            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
           </li>
         </ul>
       </div>
