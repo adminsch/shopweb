@@ -21,6 +21,11 @@
 		<action name="xbox" class="cn.action.GoodsAction" method="xbox">
 			<result>/page/xbox.jsp</result>
 		</action>
+		
+		<action name="registaction" class="cn.action.UserAction" method="registAction">
+			<result name="success" type="redirect">login</result>
+			<result name="input">/page/regist.jsp</result>
+		</action>
 
 	</package>
 

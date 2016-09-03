@@ -275,7 +275,7 @@
       </div>
     </div>
   </div>
-  <div id="footer">
+  <!-- <div id="footer">
     <div class="footer-logo">
       芙佳
     </div>
@@ -285,7 +285,7 @@
       <dd>Fax. 02-541-7487</dd>
       <dd>mail: www.fujia@163.com</dd>
     </dl>
-  </div>
+  </div> -->
 </body>
 <script>
   $(".fade-banner").fadeBanner();//轮播图插件初始化，注意control-fade，contrl-tab两个属性规定是否有小圆点控制按钮和tab切换的按钮

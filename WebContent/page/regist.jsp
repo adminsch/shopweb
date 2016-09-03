@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,53 +34,57 @@
    <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div class="regist-con">
-      <form>
+      <form action="${path }/registaction" id="registform" method="post">
         <fieldset>
           <legend>用户注册</legend>
           <ul class="regist-cont">
             <li>
               <dl>
-                <dt>用户名：</dt>
-                <dd><input type="text" value="请输入您的用户名" onfocus="$(this).css('color','#000').val('');" /></dd>
+                <dt>用户名：</dt> 
+                <dd><input type="text" placeholder="请输入您的用户名" name="user.name" id="name" onfocus="$(this).css('color','#000');" />
+                	<input type="hidden" id="msg" value="${fieldErrors.name }"/>
+                </dd>
               </dl>
               <span>*</span>
             </li>
             <li>
               <dl>
                 <dt>密码：</dt>
-                <dd class="regist-password"><input type="text" value="请输入您的密码" onfocus="$(this).attr('type','password').css('color','#000').val('');" /></dd>
+                <dd class="regist-password"><input type="text" id="password" name="user.password" onfocus="$(this).attr('type','password').css('color','#000');" /></dd>
               </dl>
               <span>*</span>
             </li>
             <li>
               <dl>
                 <dt>确认密码：</dt>
-                <dd class="insure-password"><input type="text" value="请再次输入您的密码" onfocus="$(this).attr('type','password').css('color','#000').val('');" /></dd>
+                <dd class="insure-password"><input type="text" id="password1" name="password1" onfocus="$(this).attr('type','password').css('color','#000');" /></dd>
               </dl>
               <span>*</span>
             </li>
             <li>
               <dl>
                 <dt>电话：</dt>
-                <dd><input type="text" value="请输入您的电话号码" onfocus="$(this).css('color','#000').val('');" /></dd>
+                <dd><input type="text" placeholder="请输入您的电话号码" name="user.phone" id="phone" onfocus="$(this).css('color','#000');" /></dd>
               </dl>
               <span>*</span>
             </li>
             <li>
               <dl>
-                <dt>电子邮箱：</dt>
-                <dd><input type="text" value="请输入您的电子邮箱" onfocus="$(this).css('color','#000').val('');" /></dd>
+                <dt>验证码：</dt>
+                <dd><input type="text" placeholder="验证码" onfocus="$(this).attr('type','password').css('color','#000');" style="width: 90px;" />&nbsp;&nbsp;
+                <img alt="验证码" src="${path}/code.jpg" id="code" onclick="reloadcode()"></dd>
               </dl>
               <span>*</span>
             </li>
           </ul>
-          <p class="btn-regist"><a href="javascript:;"><img src="page/img/btn-regist02.gif" width="223" height="30" alt="注册" /></a></p>
+          <p class="btn-regist"><img src="page/img/btn-regist02.gif" id="registbtn" width="223" height="30" alt="注册" /></p>
           <p class="login-direct"><a href="${path }/login">直接登录</a></p>
   		</fieldset>
       </form>
     </div>
   </div>
-  <div id="footer">
+  <s:debug></s:debug>
+  <!-- <div id="footer">
     <div class="footer-logo">
       芙佳
     </div>
@@ -89,6 +94,38 @@
       <dd>Fax. 02-541-7487</dd>
       <dd>mail: www.fujia@163.com</dd>
     </dl>
-  </div>
+  </div> -->
+<script type="text/javascript" >
+function reloadcode() {//点击图片换验证图片
+	var verify = document.getElementById('code');
+	verify.setAttribute('src', '${path}/code.jpg?it=' + Math.random());
+}
+
+$(function() {
+	if($("#msg").val()!=''){
+		alert($("#msg").val().substr(1,5));
+	}
+	$("#registbtn").click(function() {
+		var regname=/^[a-zA-Z]{1}[0-9a-zA-Z_]{5,}$/
+		var phone=/^1\d{10}$/;
+		if(!regname.test($("#name").val())){
+			alert("用户名过短");
+			return false;
+		}else if(!regname.test($("#password").val())){
+			alert("密码不合法");
+			return false;
+		}else if($("#password").val()!=$("#password1").val()){
+			alert("密码不一致");
+			return false;
+		}else if(!phone.test($("#phone").val())){
+			alert("手机号不合法");
+			return false;
+		}else{
+			$("#registform").submit();
+		}
+	})
+})
+			
+</script>
 </body>
 </html>

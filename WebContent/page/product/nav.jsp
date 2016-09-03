@@ -15,7 +15,7 @@
       <ul>
         <li><a href="${path }/index">首页</a></li>
         <li><a href="${path }/pinfo">信息</a></li>
-        <li><a href="${path }/record">我的芙佳</a></li>
+        <li><a href="${path }/record">我的订单</a></li>
         <li><a href="${path }/cart">我的评价</a></li>
         <li><a href="${path }/cart">购物车</a></li>
         <li><a href="${path }/xbox">二手交易</a></li>
