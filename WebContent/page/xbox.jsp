@@ -25,36 +25,7 @@
  <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div id="nav-side">
-      <div class="login-container">
-        <p class="login-title"><img src="page/img/title-login.gif" alt="会员登入" width="147" height="23" /></p>
-        <form>
-          <ul class="login-input">
-            <li>
-              <label>账号：</label>
-              <input type="text" />
-            </li>
-            <li>
-              <label>密码：</label>
-              <input type="password" />
-            </li>
-          </ul>
-          <p class="f-password"><a href="javascript:;">忘记密码？</a></p>
-          <p class="login-btn">
-            <a href="javascript:;"><img src="page/img/btn-login.gif" width="61" height="19" alt="登入" /></a>
-            <a href="regist.html"><img src="page/img/btn-regist.gif" width="61" height="19" alt="注册" /></a>
-          </p>
-        </form>
-      </div>
-      <div class="login-container">
-        <dl class="login-suc">
-          <dt><img src="page/img/img-photo.jpg" width="62" height="62" alt="头像" /></dt>
-          <dd>
-            <p class="user-name">张三丰</p>
-            <p>您好！</p>
-          </dd>
-        </dl>
-        <p class="my-fujia"><a href="page/person/record.html"><img src="page/img/btn-personal.gif" width="89" height="21" alt="我的芙佳" /></a></p>
-      </div>
+     <%@include file="/page/product/info.jsp" %>
       <div class="pro-kinds">
         <h1 class="kinds-tit">产品分类</h1>
         <div class="kinds-cont">
@@ -274,17 +245,6 @@
         </ul>
       </div>
     </div>
-  </div>
-  <div id="footer">
-    <div class="footer-logo">
-      芙佳
-    </div>
-    <dl class="company-info">
-      <dt>公司信息</dt>
-      <dd>TEL. 02-3446-8622</dd>
-      <dd>Fax. 02-541-7487</dd>
-      <dd>mail: www.fujia@163.com</dd>
-    </dl>
   </div>
 </body>
 <script>

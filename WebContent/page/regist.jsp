@@ -71,7 +71,7 @@
             <li>
               <dl>
                 <dt>验证码：</dt>
-                <dd><input type="text" placeholder="验证码" onfocus="$(this).attr('type','password').css('color','#000');" id="incode" style="width: 90px;" />&nbsp;&nbsp;
+                <dd><input type="text" placeholder="验证码" onfocus="$(this).css('color','#000');" id="incode" style="width: 90px;" />&nbsp;&nbsp;
                 <img alt="验证码" src="${path}/code.jpg" id="code" onclick="reloadcode()"></dd>
               </dl>
               <span>*</span>
@@ -108,14 +108,13 @@ $(function() {
 	$("#registbtn").click(function() {
 		var regname=/^[a-zA-Z]{1}[0-9a-zA-Z_]{5,}$/
 		var phone=/^1\d{10}$/;
-		
-		$.post('${path}/checkCode',{},function(data){
+		$.post("${path}/checkCode",{},function(data){
 			if(data!=$("#incode").val().toLowerCase()){
 				alert("验证码错误");
 				return false;
 			}else{
 				if(!regname.test($("#name").val())){
-					alert("用户名过短");
+					alert("用户名不合法");
 					return false;
 				}else if(!regname.test($("#password").val())){
 					alert("密码不合法");
@@ -130,6 +129,7 @@ $(function() {
 					$("#registform").submit();
 				}
 			}
+			
 		})
 		
 	})

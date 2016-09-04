@@ -31,16 +31,20 @@
   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div class="login-con">
-      <form>
+      <form action="${path }/loginaction" id="loginform" method="post">
         <fieldset>
           <legend>用户登录</legend>
           <div class="login-cont">
             <p class="login-left"><img src="page/img/img-login.gif" width="233" height="204" alt="赢在起点，笑在路上" /></p>
             <div class="login-right">
-              <p class="login-name"><input type="text" value="请输入您的用户名" onfocus="$(this).css('color','#000').val('');" /></p>
-              <p class="login-password"><input type="text" value="请输入您的密码" onfocus="$(this).attr('type','password').css('color','#000').val('');" /></p>
-              <p><a href="javascript:;">忘记密码？</a></p>
-              <p class="btn-login"><img src="page/img/btn-login02.gif" width="223" height="30" alt="登录" /></p>
+              <p class="login-name"><input type="text" placeholder="用户名" onfocus="$(this).css('color','#000');" name="user.name" id="name" />
+              <input type="hidden" id="msg" value="${fieldErrors.msg }"/></p>
+              <p class="login-password"><input type="text" placeholder="密码" onfocus="$(this).attr('type','password').css('color','#000')"  id="password" name="user.password" /></p>
+              <p class="login-code"><input type="text" placeholder="验证码" onfocus="$(this).attr('type','password').css('color','#000');" id="incode" style="width: 90px;" />&nbsp;&nbsp;
+              <img alt="验证码" src="${path}/code.jpg" id="code" onclick="reloadcode()"></p>
+             <br/>
+              <!-- <p><a href="javascript:;">忘记密码？</a></p> -->
+              <p class="btn-login"><img src="page/img/btn-login02.gif" width="223" height="30" id="loginbtn" alt="登录" /></p>
               <p class="new-user"><a href="${path }/regist">新用户注册</a></p>
             </div>
           </div>
@@ -48,16 +52,39 @@
       </form>
     </div>
   </div>
-  <div id="footer">
-    <div class="footer-logo">
-      芙佳
-    </div>
-    <dl class="company-info">
-      <dt>公司信息</dt>
-      <dd>TEL. 02-3446-8622</dd>
-      <dd>Fax. 02-541-7487</dd>
-      <dd>mail: www.fujia@163.com</dd>
-    </dl>
-  </div>
+ <script type="text/javascript" >
+function reloadcode() {//点击图片换验证图片
+	var verify = document.getElementById('code');
+	verify.setAttribute('src', '${path}/code.jpg?it=' + Math.random());
+}
+
+$(function() {
+	if($("#msg").val()!=''){
+		alert($("#msg").val().substr(1,8));
+	}
+	$("#loginbtn").click(function() {
+		var regname=/^[a-zA-Z]{1}[0-9a-zA-Z_]{5,}$/
+		$.post("${path}/checkCode",{},function(data){
+			if(data!=$("#incode").val().toLowerCase()){
+				alert("验证码错误");
+				return false;
+			}else{
+				if(!regname.test($("#name").val())){
+					alert("用户名不合法");
+					return false;
+				}else if(!regname.test($("#password").val())){
+					alert("密码不合法");
+					return false;
+				}else{
+					$("#loginform").submit();
+				}
+			}
+			
+		})
+		
+	})
+})
+			
+</script>
 </body>
 </html>
