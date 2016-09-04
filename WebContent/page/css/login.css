@@ -45,13 +45,9 @@
 }
 .login-right p.login-name input {
   background: url(../img/bg-login-name.gif) no-repeat 6px 5px #f8f6f7;
-  margin-bottom: 10px;
+  margin-bottom: 33px;
 }
 .login-right p.login-password input {
-  background: url(../img/bg-login-password.gif) no-repeat 6px 5px #f8f6f7;
-  margin-bottom: 10px;
-}
-.login-right p.login-code input img{
   background: url(../img/bg-login-password.gif) no-repeat 6px 5px #f8f6f7;
   margin-bottom: 10px;
 }

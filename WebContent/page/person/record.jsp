@@ -297,7 +297,7 @@
     </div>
     </div>
   </div>
-  <!-- <div id="footer">
+  <div id="footer">
     <div class="footer-logo">
       芙佳
     </div>
@@ -307,6 +307,6 @@
       <dd>Fax. 02-541-7487</dd>
       <dd>mail: www.fujia@163.com</dd>
     </dl>
-  </div> -->
+  </div>
 </body>
 </html>

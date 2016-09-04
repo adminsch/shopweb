@@ -39,8 +39,6 @@
             <div class="login-right">
               <p class="login-name"><input type="text" value="请输入您的用户名" onfocus="$(this).css('color','#000').val('');" /></p>
               <p class="login-password"><input type="text" value="请输入您的密码" onfocus="$(this).attr('type','password').css('color','#000').val('');" /></p>
-              <p class="login-code"><input type="text" value="验证码" onfocus="$(this).attr('type','password').css('color','#000').val('');" style="width: 90px;" />&nbsp;&nbsp;<img alt="验证码" src="${path}/code.jpg" id="code" onclick="reloadcode()"></p>
-             <br/>
               <p><a href="javascript:;">忘记密码？</a></p>
               <p class="btn-login"><img src="page/img/btn-login02.gif" width="223" height="30" alt="登录" /></p>
               <p class="new-user"><a href="${path }/regist">新用户注册</a></p>
@@ -50,7 +48,7 @@
       </form>
     </div>
   </div>
-  <!-- <div id="footer">
+  <div id="footer">
     <div class="footer-logo">
       芙佳
     </div>
@@ -60,6 +58,6 @@
       <dd>Fax. 02-541-7487</dd>
       <dd>mail: www.fujia@163.com</dd>
     </dl>
-  </div> -->
+  </div>
 </body>
 </html>
