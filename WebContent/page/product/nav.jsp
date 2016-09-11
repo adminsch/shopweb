@@ -10,7 +10,7 @@
 <body>
 <div id="header">
  <div class="header-top">
-    <div class="logo-container"><img src="page/img/logo-fujia.png" width="197" height="51" alt="logo" /></div>
+    <div class="logo-container"><font size="5" color="red">xxx电子商城</font></div>
     <div class="header-nav">
       <ul>
         <li><a href="${path }/index">首页</a></li>
