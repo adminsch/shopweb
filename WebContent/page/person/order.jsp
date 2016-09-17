@@ -13,29 +13,7 @@
 <body bgcolor="#e0d6df">
   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
-    <div id="nav-side">
-      <div class="person-container">
-        <div class="person-message">
-          <p class="person-photo"><img src="page/img/img-person.jpg" width="87" height="87" alt="张三丰" /></p>
-          <p class="person-name">张三丰，您好！</p>
-          <p class="person-repair"><a href="data.html">[修改]</a></p>
-        </div>
-        <div class="my-message">
-         <p class="my-address">
-            <a href="address.html">我的地址</a>
-          </p>
-          <p class="my-intrgral">
-            <a href="integral.html">我的积分：<span>122</span></a>
-          </p>
-          <p class="my-coupon">
-            <a href="coupon.html">我的优惠券：<span>4张</span></a>
-          </p>
-          <p class="my-record">
-            <a href="record.html">购买记录</a>
-          </p>
-        </div>
-      </div>
-    </div>
+    <%@include file="/page/person/userinfo.jsp" %>
     <div id="content">
       <h1 class="title">订单信息</h1>
       <div class="specie-container">

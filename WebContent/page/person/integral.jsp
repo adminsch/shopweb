@@ -16,29 +16,7 @@
 <body bgcolor="#e0d6df">
    <%@include file="/page/product/nav.jsp" %>
   <div id="container">
-    <div id="nav-side">
-      <div class="person-container">
-        <div class="person-message">
-          <p class="person-photo"><img src="page/img/img-person.jpg" width="87" height="87" alt="张三丰" /></p>
-          <p class="person-name">张三丰，您好！</p>
-          <p class="person-repair"><a href="data.html">[修改]</a></p>
-        </div>
-        <div class="my-message">
-          <p class="my-address">
-            <a href="address.html">我的地址</a>
-          </p>
-          <p class="my-intrgral">
-            <a href="integral.html">我的积分：<span>122</span></a>
-          </p>
-          <p class="my-coupon">
-            <a href="coupon.html">我的优惠券：<span>4张</span></a>
-          </p>
-          <p class="my-record">
-            <a href="record.html">购买记录</a>
-          </p>
-        </div>
-      </div>
-    </div>
+    <%@include file="/page/person/userinfo.jsp" %>
     <div id="content">
       <h1 class="title">我的积分</h1>
       <div class="integral-con">
@@ -187,52 +165,7 @@
           <span>下一页&gt;</span>
         </p>
       </div>
-      <div class="recommend">
-      <h1 class="title">掌柜推荐</h1>
-      <div class="rec-slider">
-      <ul>
-      <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-      </ul>
-      </div>
-      <p class="recommend-tab">
-        <span class="recommend-prev">&lt;</span>
-        <span class="recommend-next">&gt;</span>
-      </p>
-    </div>
+       <%@include file="/page/product/recommend.jsp" %>
       </div>
     </div>
   </div>

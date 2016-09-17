@@ -6,7 +6,7 @@
     <class name="cn.model.Commodity" table="COMMODITY">
         <id name="cid" type="int">
             <column name="CID" />
-            <generator class="assigned" />
+            <generator class="native" />
         </id>
         <property name="cname" type="java.lang.String">
             <column name="CNAME" />
@@ -29,8 +29,8 @@
         <property name="record" type="int">
             <column name="RECORD" />
         </property>
-        <property name="cpicture" type="java.lang.String">
-            <column name="CPICTURE" />
+        <property name="pictureFileName" type="java.lang.String">
+            <column name="pictureFileName" />
         </property>
         <set name="messages" table="MESSAGE" inverse="false" lazy="true">
             <key>
@@ -38,5 +38,8 @@
             </key>
             <one-to-many class="cn.model.Message" />
         </set>
+         <property name="Cdate" type="java.util.Date">
+            <column name="cdate" />
+        </property>
     </class>
 </hibernate-mapping>

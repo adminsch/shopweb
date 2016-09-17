@@ -12,13 +12,9 @@
 <link rel="stylesheet" href="page/css/index.css" type="text/css" media="all" />
 <script type="text/javascript" src="page/js/jquery.js"></script>
 <script type="text/javascript" src="page/js/fadebanner.js"></script>
-<!--[if IE 8]> 
-  <style type="text/css">
-    .kinds-det .det-content a {
-	  border-right: none;
-    }
-  </style>
-<![endif]-->
+<style rel="stylesheet" type="text/css">
+.table tr,td{padding:5px;}
+</style>
 </head>
 
 <body bgcolor="#e0d6df">
@@ -26,105 +22,27 @@
   <div id="container">
     <div id="nav-side">
     <%@include file="/page/product/info.jsp" %>
-      <div class="pro-kinds">
-        <h1 class="kinds-tit">产品分类</h1>
-        <div class="kinds-cont">
-          <div class="kinds-det">
-            <h2 class="det-tit">新鲜水果</h2>
-            <div class="det-content">
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠...</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <div style="clear: both;"></div>
-            </div>
-          </div>
-          <div class="kinds-det">
-            <h2 class="det-tit">有机蔬菜</h2>
-            <div class="det-content">
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠...</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <div style="clear: both;"></div>
-            </div>
-          </div>
-          <div class="kinds-det">
-            <h2 class="det-tit">日用百货</h2>
-            <div class="det-content">
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠...</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">猕猴桃</a>
-              <a href="product/details.html">苹果</a>
-              <a href="product/details.html">梨青柠檬</a>
-              <div style="clear: both;"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hot-sale">
+   	<%@include file="/page/product/hot.jsp" %>
+     <%--  <div class="hot-sale">
         <h1 class="hot-tit">热卖商品</h1>
         <div class="hot-cont">
+        <c:forEach items="${requestScope.c }" var="commodity">
           <ul class="hot-list">
             <li>
-              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
-              <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
-            </li>
-            <li>
-              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
-              <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
-            </li>
-            <li>
-              <p><a href="product/details.html"><img src="page/img/img-hot01.jpg" width="136" height="112" alt="安岳柠檬" /></a></p>
-              <p class="hot-name"><a href="product/details.html">安岳柠檬  <span>RMB:100</span></a></p>
+              <p><a href="${path }/detail?commodity.cid=${commodity.cid}"><img src="../../${commodity.pictureFileName }" width="136" height="112"/></a></p>
+              <p class="hot-name"><a href="product/details.html">${commodity.cname }<span>RMB:${commodity.price }</span></a></p>
             </li>
           </ul>
+          </c:forEach>
         </div>
-      </div>
+      </div> --%>
     </div>
     <div id="content">
       <div class="banner-cont">
         <ul class="fade-banner" control-fade="banner-control">
-          <li><a href="product/product.html"><img src="page/img/bnr-photo01.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="page/img/bnr-photo02.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="page/img/bnr-photo03.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="page/img/bnr-photo04.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
-          <li><a href="product/product.html"><img src="page/img/bnr-photo05.jpg" width="744" height="303" alt="蒙自石榴" /></a></li>
+        <c:forEach items="${requestScope.c }" var="commodity">
+          <li><a href="${path }/detail?commodity.cid=${commodity.cid}"><img src="../../${commodity.pictureFileName }" width="744" height="303" alt="${commodity.cname }" /></a></li>
+        </c:forEach>
         </ul>
         <ul class="banner-control">
           <li class="active"></li>
@@ -135,131 +53,25 @@
         </ul>
       </div>
       <div class="promotion-area">
-        <h1 class="title">促销专区</h1>
-        <ul class="promotion-list">
-          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
-          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
-          <li><a href="product/details.html"><img src="page/img/img-promotion01.jpg" alt="樱桃" width="215" height="199" /></a></li>
-        </ul>
+        <h1 class="title">商品专区</h1>
+  
+      <ul class="promotion-list">
+        <c:forEach var="commodity" items="${commoditys }">
+         <li>
+         	<a href="${path }/detail?commodity.cid=${commodity.cid}">
+         	<div style="position:relative;width:215px ;height:199px ;">
+			   <img src="../../${commodity.pictureFileName }" title="库存:${commodity.stock} 销量:${commodity.record}" style="border-width:0px;" width="215px" height="199px" />
+			   <img src="page/img/buy.png" style="border-width:0px;position:absolute;width:70px;height:50px;z-indent:2;left:0;top:0;margin-left:130px;margin-top: 137px;"/>
+			</div>
+         	</a>
+         </li>
+		   <c:if test="${(status.index+1)%3==0 }">
+      			<ul/>
+      	   </c:if>
+        </c:forEach>
+        </ul> 
       </div>
-      <div class="product-show">
-        <h1>
-          <span>新鲜水果</span>
-          <span class="show-arrow"></span>
-          <a href="product/product.html">更多</a>
-        </h1>
-        <ul class="show-list">
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-        </ul>
-      </div>
-      <div class="product-show">
-        <h1>
-          <span>有机蔬菜</span>
-          <span class="show-arrow"></span>
-          <a href="product/product.html">更多</a>
-        </h1>
-        <ul class="show-list">
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-        </ul>
-      </div>
-      <div class="product-show">
-        <h1>
-          <span>日用百货</span>
-          <span class="show-arrow"></span>
-          <a href="product/product.html">更多</a>
-        </h1>
-        <ul class="show-list">
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-          <li>
-            <p><a href="product/details.html"><img src="page/img/index/img-products01.jpg" alt="百货" width="136" height="137" /></a></p>
-            <p class="show-name">水果</p>
-            <p class="show-price"><a href="product/details.html">RMB 100</a></p>
-          </li>
-        </ul>
-      </div>
-      <div class="product-show">
-        <h1>
-          <span>合作伙伴</span>
-          <span class="show-arrow"></span>
-          <a href="javascript:;"></a>
-        </h1>
-        <ul class="show-list">
-          <li>
-            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
-          </li>
-          <li>
-            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
-          </li>
-          <li>
-            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
-          </li>
-          <li>
-            <p><a href="javascript:;"><img src="page/img/index/img-tmall.gif" alt="合作伙伴" width="136" height="137" /></a></p>
-          </li>
-        </ul>
-      </div>
+     
     </div>
   </div>
 </body>

@@ -17,12 +17,13 @@
   <div id="container">
     <div id="content">
       <div class="pay-method">
-        <h1 class="title">支付方式</h1>
+        <h1 class="title">支付完成</h1>
         <div class="form-message">
-          <p>订单号：<span>1131451111111111</span></p>
-          <p>订单总价：<span>396.50元</span></p>
+          <p>订单号：<span>${order.batchno }</span></p>
+          <p>订单总价：<span>${order.batchtotle}</span></p>
+          <p><span><a href="${path }/discuss?order.batchno=${order.batchno }">评价</a></span></p>
         </div>
-        <div class="online-method">
+        <!-- <div class="online-method">
           <p class="online-title"><img src="page/img/pay/logo-online.gif" width="139" height="55" alt="在线支付" />选择支付方式：</p>
           <div class="online-container">
             <ul>
@@ -33,54 +34,9 @@
               <li><img src="page/img/pay/ico-alipy.gif" width="180" height="114" alt="支付宝" /></li>
             </ul>
           </div>
-        </div>
+        </div> -->
       </div>
-      <div class="recommend">
-      <h1 class="title">掌柜推荐</h1>
-      <div class="rec-slider">
-      <ul>
-      <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-      </ul>
-      </div>
-      <p class="recommend-tab">
-        <span class="recommend-prev">&lt;</span>
-        <span class="recommend-next">&gt;</span>
-      </p>
-    </div>
+       <%@include file="/page/product/recommend.jsp" %>
     </div>
   </div>
   

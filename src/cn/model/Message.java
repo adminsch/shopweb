@@ -2,12 +2,17 @@ package cn.model;
 
 import java.util.Date;
 
+import javax.persistence.Transient;
+
 public class Message {
 	private int mid;
-	private User user;
+	private User user=new User();
 	private String content;
 	private Date mdate;
-	private Commodity commodity;
+	private Commodity commodity=new Commodity();
+	private int rate;
+	@Transient
+	private String batchno;
 	public int getMid() {
 		return mid;
 	}
@@ -37,6 +42,18 @@ public class Message {
 	}
 	public void setCommodity(Commodity commodity) {
 		this.commodity = commodity;
+	}
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+	public int getRate() {
+		return rate;
+	}
+	public void setBatchno(String batchno) {
+		this.batchno = batchno;
+	}
+	public String getBatchno() {
+		return batchno;
 	}
 	@Override
 	public String toString() {

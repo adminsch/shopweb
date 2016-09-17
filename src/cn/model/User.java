@@ -1,5 +1,6 @@
 package cn.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,8 +12,10 @@ public class User {
 	private int role;
 	private int integral;
 	private String phone;
+	private Date date;
+	private String relname;
 	private Set<Address> addrs=new HashSet<Address>();
-	private Set<Order> orders=new HashSet<Order>();
+	private Set<Orders> orders=new HashSet<Orders>();
 	private Set<Goods> goodss=new HashSet<Goods>();
 	private Set<Message> messages=new HashSet<Message>();
 	public int getUid() {
@@ -57,10 +60,10 @@ public class User {
 	public void setAddrs(Set<Address> addrs) {
 		this.addrs = addrs;
 	}
-	public Set<Order> getOrders() {
+	public Set<Orders> getOrders() {
 		return orders;
 	}
-	public void setOrders(Set<Order> orders) {
+	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
 	}
 	public Set<Goods> getGoodss() {
@@ -75,14 +78,27 @@ public class User {
 	public void setMessages(Set<Message> messages) {
 		this.messages = messages;
 	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setRelname(String relname) {
+		this.relname = relname;
+	}
+	public String getRelname() {
+		return relname;
+	}
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", name=" + name + ", password=" + password
 				+ ", role=" + role + ", integral=" + integral + ", phone="
-				+ phone + ", addrs=" + addrs 
-				+ ", orders=" + orders + ", goodss=" + goodss + ", messages="
-				+ messages + "]";
+				+ phone + ", date=" + date + ", relname=" + relname
+				+ ", addrs=" + addrs + ", orders=" + orders + ", goodss="
+				+ goodss + ", messages=" + messages + "]";
 	}
+	
 
 
 }
