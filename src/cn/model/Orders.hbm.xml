@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-9-2 22:25:14 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 2016-9-14 14:40:20 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="cn.model.Order" table="ORDER">
+    <class name="cn.model.Orders" table="ORDERS">
         <id name="oid" type="int">
             <column name="OID" />
             <generator class="native" />
         </id>
+        <many-to-one name="commodity" class="cn.model.Commodity" lazy="false" fetch="join">
+            <column name="cid" />
+        </many-to-one>
         <property name="cname" type="java.lang.String">
             <column name="CNAME" />
         </property>
@@ -23,17 +26,20 @@
         <property name="batchno" type="java.lang.String">
             <column name="BATCHNO" />
         </property>
-        <many-to-one name="user" class="cn.model.User" fetch="join">
-            <column name="Uid" />
+        <many-to-one name="user" class="cn.model.User" lazy="false" fetch="join">
+            <column name="uid" />
         </many-to-one>
         <property name="saddr" type="java.lang.String">
-            <column name="SADDR" />
+            <column name="saddr" />
         </property>
         <property name="faddr" type="java.lang.String">
-            <column name="FADDR" />
+            <column name="faddr" />
         </property>
         <property name="status" type="int">
             <column name="STATUS" />
+        </property>
+        <property name="isgw" type="int">
+            <column name="isgw" />
         </property>
     </class>
 </hibernate-mapping>

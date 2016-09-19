@@ -11,6 +11,15 @@
         <property name="addr" type="java.lang.String">
             <column name="ADDR" />
         </property>
+         <property name="aname" type="java.lang.String">
+            <column name="aname" />
+        </property>
+         <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+         <property name="postal" type="java.lang.String">
+            <column name="postal" />
+        </property>
         <many-to-one name="user" class="cn.model.User" fetch="join">
             <column name="Uid" />
         </many-to-one>

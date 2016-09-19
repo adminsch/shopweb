@@ -1,6 +1,7 @@
 package cn.service;
 
 import java.security.MessageDigest;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.dao.UserDao;
+import cn.model.Commodity;
 import cn.model.User;
 
 @Service
@@ -19,6 +21,7 @@ public class UserService {
 
 	public void registService(User user) {
 		user.setPassword(encrypt(user.getPassword()));
+		user.setDate(new Date());
 		userDao.registDao(user);
 	}
 	
@@ -27,15 +30,30 @@ public class UserService {
 		return userDao.loginDao(user);
 	}
 
+	public List<User> getUsers() {
+		return userDao.getUsers();
+	}
 	
+	public int delUser(User user) {
+		return userDao.delUser(user);
+		
+	}
+	public User getUser(int uid){
+		return userDao.getUser(uid);
+	}
+	public void editUser(User user){
+		if(user.getPassword()!=null&&!user.getPassword().isEmpty()){
+			user.setPassword(encrypt(user.getPassword()));
+		}
+		userDao.editUser(user);
+	}
 	
 	// 查看用户是否已注册
 	public int checkUsername(String name) {
 		return userDao.checkUsername(name);
 	}
 	
-	
-	
+
 	
 	  public static String encrypt(String inStr){  
 	        MessageDigest md5 = null;  

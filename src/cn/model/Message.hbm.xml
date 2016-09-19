@@ -17,6 +17,9 @@
         <property name="mdate" type="java.util.Date">
             <column name="MDATE" />
         </property>
+        <property name="rate" type="int">
+            <column name="rate" />
+        </property>
         <many-to-one name="commodity" class="cn.model.Commodity" fetch="join">
             <column name="Cid" />
         </many-to-one>

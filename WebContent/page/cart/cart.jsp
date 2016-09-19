@@ -1,152 +1,177 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    <%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>购物车</title>
+<c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <link rel="stylesheet" href="page/css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="page/css/settlement.css" type="text/css" media="all" />
 <link rel="stylesheet" type="text/css" href="page/css/modal.css" media="all" />
 <link rel="stylesheet" href="page/css/cart.css" type="text/css" media="all" />
 <script type="text/javascript" src="page/js/jquery.js"></script>
 <script type="text/javascript" src="page/js/slider.js"></script>
 <script type="text/javascript" src="page/js/modal.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#jifen").on('input',function(e){  
+		if($("#jflabel").text()<$("#jifen").val()){
+			$("#jifen").val($("#jflabel").text());
+		}
+	});
+	$(".sub").click(function() {
+		var val=$($($(this).next()).children('.numtext')).val();
+		if(val<=1){
+			return false;
+		}
+		val--;
+		var obj=$(this);
+		var oid=$($($($($(this).parent('.count')).prev()).prev()).children('.hidden')).val();
+		var price=$($($(this).parent('.count')).prev()).text();
+		$.post("${path}/updategw",{'order.oid':oid,'order.cprice':price,'order.cnum':val},function(data){
+			$($($(obj).next()).children('.numtext')).val(val);
+			$("#total").text(parseFloat($("#total").text())-parseFloat($($($(obj).parent('.count')).prev()).text()));
+			
+		});
+		
+	})
+	$(".sum").click(function() {
+		var val=$($($(this).prev()).children('.numtext')).val();
+		var relval=$($($($($($(this).parent('.count')).prev()).prev())).prev()).val();
+		if(parseInt(relval)>parseInt(val)){
+			val++;
+			var obj=$(this);
+			var oid=$($($($($(this).parent('.count')).prev()).prev()).children('.hidden')).val();
+			var price=$($($(this).parent('.count')).prev()).text();
+			$.post("${path}/updategw",{'order.oid':oid,'order.cprice':price,'order.cnum':val},function(data){
+				$($($(obj).prev()).children('.numtext')).val(val);
+				$("#total").text(parseFloat($($($(obj).parent('.count')).prev()).text())+parseFloat($("#total").text()));
+				
+			});
+		}	
+	})
+	$("#paybtn").click(function() {
+		if($("input[name='address']:checked")==null||$("input[name='address']:checked").val()==undefined){
+			alert("请选择收货地址");
+			return false;
+		}
+		$("#attrhidden").val($("input[name='address']:checked").val());
+		$("#batchtotalhidden").val($("#total").text());
+		if(!confirm("确定完成支付?")){
+			return false;
+		}else{
+			localStorage.removeItem("batchno");
+			$("#batchtotalhidden").val($("#total").text());
+			$("#form").submit();
+		}
+	})
+	$(".clear").click(function() {
+		$.post("${path}/delshop",{'order.batchno':localStorage.getItem("batchno")},function(data){
+			localStorage.removeItem("batchno");
+			$("#content1").empty();
+			$("#content1").html('<h1 style="font-size: 40px;text-align: center;">空空如也，快去购物</h1>');
+		})
+	})
+	   //${totle.batchtotle }
+	$("#check").click(function(){
+        if($("#check").prop("checked")==true){
+        	$("#total").text('<f:formatNumber value="${totle.batchtotle -(totle.user.integral)/10}" pattern="0.00" type="number"></f:formatNumber>');
+       		$("#checkhidden").val(1);
+        }else{    
+        	$("#total").text('${totle.batchtotle}');
+        	$("#checkhidden").val(0);
+        }
+        })
+	
+	if("${fn:length(orders)}"==0){
+		$("#content1").empty();
+		$("#content1").html('<h1 style="font-size: 40px;text-align: center;">空空如也，快去购物</h1>');
+	}
+})
+</script>
 </head>
 
 <body bgcolor="#e0d6df">
   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
     <div id="content">
-      <div class="cart-message">
+      <div class="cart-message">  
+       <div class="receive-container">
+          <h1 class="title">收货人</h1>
+          <div class="address-container">
+          <c:forEach items="${requestScope.addrs }" var="addr">
+          	<dl class="address-content">
+              <dt><span><input type="radio" name="address" value="${addr.addr }" /></span>${addr.aname }</dt>
+              <dd>${addr.addr }, ${addr.aname }<span class="telephone">${addr.phone }</span></dd>
+            </dl>
+          </c:forEach>
+            </div>
+            </div>
+      
         <h1 class="title">购物车</h1>
+        <div id="content1">
         <ul class="cart-nav">
-          <li class="checked"><span><input type="checkbox" /></span>全选</li>
+          <li class="checked"><span></span>商品图片</li>
           <li class="name">商品</li>
           <li class="message">商品信息</li>
           <li class="price">单价</li>
           <li class="count">数量</li>
           <li class="operation">操作</li>
         </ul>
+        
+        <c:forEach items="${orders }" var="order">
         <ul class="shopping-message">
-          <li class="checked"><span><input type="checkbox" /></span><img src="page/img/cart/img-cart01.jpg" width="80" height="80" alt="蚕豆" /></li>
-          <li class="name"><a href="page/product/details.html">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</a></li>
-          <li class="message">休闲坚果零食炒货小吃豆制品蚕豆205g</li>
-          <li class="price">199.00</li>
+          <li class="checked"><img src="../../${order.commodity.pictureFileName }" width="80" height="80"/></li>
+          <li class="name"><a href="${path }/detail?commodity.cid=${order.commodity.cid}">${order.commodity.cname }</a></li>
+          <li class="message">${order.commodity.cdesc }</li>
+          <input type="hidden" class="stockhidden" value="${order.commodity.stock }"/>
+          <li class="hiddenli"><input type="hidden" class="hidden" value="${order.oid }"/> </li>
+          <li class="price">${order.cprice }</li>
           <li class="count">
-            <span>-</span>
-            <span class="count-number"><input type="text" value="1" /></span>
-            <span>+</span>
+            <span class="sub">-</span>
+            <span class="count-number"><input type="text" class="numtext" value="${order.cnum }" /></span>
+            <span class="sum">+</span>
           </li>
-          <li class="operation"><a href="javascript:;" class="del-operation" data-title="删除">删除</a></li>
-          <script>
-    $(".del-operation").createModal({
-        background: "#000",//设定弹窗之后的覆盖层的颜色
-        width: "600px",//设定弹窗的宽度
-        height: "146px",//设定弹窗的高度
-        resizable: true,//设定弹窗是否可以拖动改变大小
-		move: false,//规定弹窗是否可以拖动
-        bgClose: false,//规定点击背景是否可以关闭
-		html: "<div class='modal-promot-mess'>确认要删除该产品吗？</div>" +
-                "<p class='insure-btn-con'><span class='sure-btn'>确定</span><span class='cancel-btn modal-close'>取消</span></p>",
-        addFunction: function(){
-            $(".modal-promot-mess").click(function(){alert("addFunction");})
-        }
-	},function(){
-        $(".insure-btn-con").click(function(){alert("callback")});
-	});
-	/*$(".insure-btn-con").delegate(".sure-btn","click",function(){
-    alert("fdsafs");
-    var data={};
-    data.ids=new Array();
-    $(".removeRow").each(function(){
-        ids.push($(this).parents(".shopping-message").find("input[type='checkbox']").attr("id"));
-    });
-    data.siteId=$("#siteId").attr("siteId");
-    data._method="delete";
-    if(data.ids&&data.ids.length>0){
-        removeGoods(data);
-    }
-});*/
-		</script>
+          <li class="operation"><a href="javascript:;" value="${order.oid}" class="del-operation" data-title="删除">删除</a></li>
         </ul>
-        <ul class="shopping-message">
-          <li class="checked"><span><input type="checkbox" /></span><img src="page/img/cart/img-cart01.jpg" width="80" height="80" alt="蚕豆" /></li>
-          <li class="name"><a href="page/product/details.html">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g</a></li>
-          <li class="message">休闲坚果零食炒货小吃豆制品蚕豆205g</li>
-          <li class="price">199.00</li>
-          <li class="count">
-            <span>-</span>
-            <span class="count-number"><input type="text" value="1" /></span>
-            <span>+</span>
-          </li>
-          <li class="operation"><a href="javascript:;">删除</a></li>
-        </ul>
+        </c:forEach>
+      
         <div class="cart-operation">
           <div class="del-clear">
-            <span class="delete">删除选中的商品</span>
             <span class="clear">清空购物车</span>
           </div>
+        <%--   <div class="cart-total">
+            <span>总计：${totle.batchtotle } </span>
+          </div> --%>
           <div class="cart-total">
-            <span><span>2</span>件商品</span>
-            <span>总计：￥398.00</span>
+            <div class="cart-total">
+            <p>
+              <span><input type="checkbox" id="check" style="margin-right: 30px;"/>使用积分<span class="use-count"><input type="text" id="jifen" value="${totle.user.integral }" style="width: 50px;" readonly="readonly"/></span>个</span>
+            </p>
+            <p class="all-integral">(你有<span id="jflabel">${totle.user.integral }</span>个积分)</p>
+            </div>
           </div>
         </div>
         <div class="cart-all">
-          <span>总计（不含运费）：</span>
-          <span class="cash-total">￥398.00</span>
+          <span class="cash-total">￥<span id="total">${totle.batchtotle }</span></span>
         </div>
+        <form action="${path }/paygw" id="form" method="post">
+            <input type="hidden" name="order.batchno" value="${totle.batchno }"/>
+            <input type="hidden" id="attrhidden" name="order.saddr" value=""/>
+             <input type="hidden" id="checkhidden" name="order.ischeck" value="0"/>
+            <input type="hidden" id="batchtotalhidden" name="order.batchtotle" />
+        </form>
         <div class="contiue-pay">
-          <a href="page/product/product.html" class="contiue">继续购物</a>
-          <a href="settlement.html" class="pay">结 算</a>
+          <a href="${path }/index" class="contiue">继续购物</a>
+          <a href="javascript:void(0);" id="paybtn" class="pay">支付</a>
         </div>
       </div>
-      <div class="recommend">
-      <h1 class="title">掌柜推荐</h1>
-      <div class="rec-slider">
-      <ul>
-      <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-      </ul>
-      </div>
-      <p class="recommend-tab">
-        <span class="recommend-prev">&lt;</span>
-        <span class="recommend-next">&gt;</span>
-      </p>
-    </div>
+       </div>
+       <%@include file="/page/product/recommend.jsp" %>
     </div>
   </div>
  

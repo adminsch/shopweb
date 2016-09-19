@@ -17,18 +17,18 @@
           <ul class="login-input">
             <li>
               <label>账号：</label>
-              <input type="text" placeholder="用户名" onfocus="$(this).css('color','#000');" name="user.name" id="name" />
+              <input type="text" placeholder="用户名" onfocus="$(this).css('color','#000');" name="user.name" id="name" value="b1234567" />
                <input type="hidden" id="msg" value="${fieldErrors.msg }"/>
             </li>
             <li>
               <label>密码：</label>
-              <input type="password" placeholder="密码" id="password" name="user.password" />
+              <input type="password" placeholder="密码" id="password" name="user.password" value="b1234567"/>
             </li>
           </ul>
          <!--  <p class="f-password"><a href="javascript:;">忘记密码？</a></p> -->
           <p class="login-btn">
             <a href="javascript:;"><img src="page/img/btn-login.gif" width="61" id="loginbtn" height="19" alt="登入" /></a>
-            <a href="${path }/regedit"><img src="page/img/btn-regist.gif" width="61" height="19" alt="注册" /></a>
+            <a href="${path }/regist"><img src="page/img/btn-regist.gif" width="61" height="19" alt="注册" /></a>
           </p>
         </form>
       </div>
@@ -39,7 +39,7 @@
           <dt><img src="page/img/img-photo.jpg" width="70" height="70" style="margin-left: 30px;" /></dt>
         </dl>
         <p class="my-fujia" style="background-color: #E9773D;">
-        	${sessionScope.name }&nbsp;&nbsp;&nbsp;&nbsp;<a href="${path }/exit">退出</a>
+        	${sessionScope.name }&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" id="exit">退出</a>
         </p>
       </div>
     </c:otherwise>
@@ -51,9 +51,10 @@
     }
 
     $(function() {
-    	if($("#msg").val()!=''){
-    		alert($("#msg").val().substr(1,8));
-    	}
+    		if($("#msg").val()!=undefined&&$("#msg").val()!=''){
+        		alert($("#msg").val().substr(1,8));
+        	}
+    	
     	$("#loginbtn").click(function() {
     		var regname=/^[a-zA-Z]{1}[0-9a-zA-Z_]{5,}$/
     				if(!regname.test($("#name").val())){
@@ -66,6 +67,10 @@
     					$("#loginform").submit();
     				}
     	})
+    	$("#exit").click(function() {
+			location.href="${path }/exit";
+			localStorage.removeItem("batchno");
+		})
     })
     </script>
 </body>

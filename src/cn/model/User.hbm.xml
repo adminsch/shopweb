@@ -23,19 +23,25 @@
         <property name="phone" type="java.lang.String">
             <column name="PHONE" />
         </property>
+         <property name="date" type="java.util.Date">
+            <column name="date" />
+        </property>
+         <property name="relname" type="java.lang.String">
+            <column name="relname" />
+        </property>
         <set name="addrs" table="ADDRESS" inverse="true" lazy="true">
             <key>
                 <column name="UID" />
             </key>
             <one-to-many class="cn.model.Address" />
         </set>
-        <set name="orders" table="ORDER" inverse="true" lazy="true">
+        <set name="orders" table="ORDERs" lazy="true">
             <key>
                 <column name="UID" />
             </key>
-            <one-to-many class="cn.model.Order" />
+            <one-to-many class="cn.model.Orders" />
         </set>
-        <set name="goodss" table="GOODS" inverse="true" lazy="true">
+        <set name="goodss" table="GOODS" inverse="true" lazy="false">
             <key>
                 <column name="UID" />
             </key>

@@ -6,48 +6,50 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>购买记录</title>
+<c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <link rel="stylesheet" href="page/css/common.css" type="text/css" media="all" />
 <link rel="stylesheet" href="page/css/record.css" type="text/css" media="all" />
 <script type="text/javascript" src="page/js/jquery.js"></script>
 <script type="text/javascript" src="page/js/common.js"></script>
 <script type="text/javascript" src="page/js/slider.js"></script>
+<script type="text/javascript">
+$(function() {
+	var cnum=$($($($($(".totalable").parent(".record-bo-lt")).prev()).prev()).prev());
+	var price=$($($($(".totalable").parent(".record-bo-lt")).prev()).prev());
+	var totalable=$(".totalable");
+	for(var i=0;i<cnum.length;i++){
+		$($(totalable)[i]).text($($(cnum)[i]).text()*$($(price)[i]).text())
+	}
+	
+	$(".delo").click(function() {
+		var val=$(this);
+		$.post("${path}/delorder",{'order.oid':$($(val).prev()).val()},function(data){
+			if(data>=1){
+				$($($($(val).parent('.record-bo-lt')).parent('.tr1')).parent('.record-tb-bo')).remove();
+			}else{
+				alert("删除失败");
+				return false;
+			}
+				
+		})
+	})
+})
+</script>
 </head>
 
 <body bgcolor="#e0d6df">
   <%@include file="/page/product/nav.jsp" %>
   <div id="container">
-    <div id="nav-side">
-      <div class="person-container">
-        <div class="person-message">
-          <p class="person-photo"><img src="page/img/img-person.jpg" width="87" height="87" alt="张三丰" /></p>
-          <p class="person-name">张三丰，您好！</p>
-          <p class="person-repair"><a href="data.html">[修改]</a></p>
-        </div>
-        <div class="my-message">
-          <p class="my-address">
-            <a href="address.html">我的地址</a>
-          </p>
-          <p class="my-intrgral">
-            <a href="integral.html">我的积分：<span>122</span></a>
-          </p>
-          <p class="my-coupon">
-            <a href="coupon.html">我的优惠券：<span>4张</span></a>
-          </p>
-          <p class="my-record">
-            <a href="record.html">购买记录</a>
-          </p>
-        </div>
-      </div>
-    </div>
+    <%@include file="/page/person/userinfo.jsp" %>
     <div id="content">
       <h1 class="title">购买记录</h1>
-      <div class="record-con">
-        <ul class="control-tab">
+     <div class="record-con">
+       <ul class="control-tab">
           <li class="active">所有订单</li>
-          <li>待付款<span>0</span></li>
+           <!--  <li>待付款<span>0</span></li>
           <li>待发货<span>0</span></li>
           <li>代收货<span>0</span></li>
-          <li>待评价<span>0</span></li>
+          <li>待评价<span>0</span></li> -->
         </ul>
         <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="record-cont">
         <thead>
@@ -63,170 +65,50 @@
             <td height="10" colspan="6"></td>
           </tr>
         </thead>
+  
+  <tbody>
+    <tr>
+      <td height="21" colspan="6"></td>
+    </tr>
+  </tbody>
+  <c:forEach items="${requestScope.orders }" var="order">
   <tbody class="record-tb-bo">
   <tr class="record-tit">
     <td height="38" colspan="3" align="left">
-      <span class="record-check"><input type="checkbox" /></span>
-      <span class="record-date">2014-11-03</span>
-      <span class="record-num">订单号：89652226454546541</span></td>
+     <!--  <span class="record-check"><input type="checkbox" /></span> -->
+     <!--  <span class="record-date">2014-11-03</span> -->
+      <span class="record-num">订单号：${order.batchno }</span></td>
     <td align="center">&nbsp;</td>
     <td align="center">&nbsp;</td>
     <td align="center"><img src="page/img/record/ico-delete.gif" width="22" height="23" alt="删除" /></td>
   </tr>
-  <tr>
+  <tr class="tr1">
     <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
+      <a href="${path }/detail?commodity.cid=${order.commodity.cid}">
+      <span class="record-img"><img src="../../${order.commodity.pictureFileName }" width="80" height="80"/></span>
+      <span class="record-name">${order.commodity.cname } </span>
       </a>
     </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">1</td>
+    <td align="center" class="record-bo-bm">${order.cprice}</td>
+    <td align="center" class="record-bo-bm">${order.cnum}</td>
+    <c:choose>
+    <c:when test="${order.status==1}">
+    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">已付款</td>
+    </c:when>
+    <c:otherwise>
     <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">待付款</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">59.90</td>
+    </c:otherwise>
+    </c:choose>
+    
+    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm"><span class="totalable">59.90</span></td>
     <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">
-      <a href="page/cart/settlement.html">立即付款</a><br />
-      <a href="javascript:;">取消订单</a>
-    </td>
-  </tr>
-  <tr>
-    <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
-      </a>
-    </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">2</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td height="21" colspan="6"></td>
-    </tr>
-  </tbody>
-  <tbody class="record-tb-bo">
-  <tr class="record-tit">
-    <td height="38" colspan="3" align="left">
-      <span class="record-check"><input type="checkbox" /></span>
-      <span class="record-date">2014-11-03</span>
-      <span class="record-num">订单号：89652226454546541</span></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center"><img src="page/img/record/ico-delete.gif" width="22" height="23" alt="删除" /></td>
-  </tr>
-  <tr>
-    <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
-      </a>
-    </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">1</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">待付款</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">59.90</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">
-      <a href="page/cart/settlement.html">立即付款</a><br />
-      <a href="javascript:;">取消订单</a>
+      <!-- <a href="page/cart/settlement.html">立即付款</a><br /> -->
+       <input type="hidden" value="${order.oid }" class="orderhidden"/> 
+      <a href="javascript:;" class="delo">删除</a>
     </td>
   </tr>
   </tbody>
-  <tbody>
-    <tr>
-      <td height="21" colspan="6"></td>
-    </tr>
-  </tbody>
-  <tbody class="record-tb-bo">
-  <tr class="record-tit">
-    <td height="38" colspan="3" align="left">
-      <span class="record-check"><input type="checkbox" /></span>
-      <span class="record-date">2014-11-03</span>
-      <span class="record-num">订单号：89652226454546541</span></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center"><img src="page/img/record/ico-delete.gif" width="22" height="23" alt="删除" /></td>
-  </tr>
-  <tr>
-    <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
-      </a>
-    </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">1</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">待发货</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">59.90</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">
-      <a href="javascript:;">买家已付款</a><br />
-      <a href="javascript:;">申请退货</a>
-    </td>
-  </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td height="21" colspan="6"></td>
-    </tr>
-  </tbody>
-  <tbody class="record-tb-bo">
-  <tr class="record-tit">
-    <td height="38" colspan="3" align="left">
-      <span class="record-check"><input type="checkbox" /></span>
-      <span class="record-date">2014-11-03</span>
-      <span class="record-num">订单号：89652226454546541</span></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center"><img src="page/img/record/ico-delete.gif" width="22" height="23" alt="删除" /></td>
-  </tr>
-  <tr>
-    <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
-      </a>
-    </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">1</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">待收货</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">59.90</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">
-      <a href="javascript:;">确认收货</a><br />
-      <a href="javascript:;">申请退款</a>
-    </td>
-  </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td height="21" colspan="6"></td>
-    </tr>
-  </tbody>
-  <tbody class="record-tb-bo">
-  <tr class="record-tit">
-    <td height="38" colspan="3" align="left">
-      <span class="record-check"><input type="checkbox" /></span>
-      <span class="record-date">2014-11-03</span>
-      <span class="record-num">订单号：89652226454546541</span></td>
-    <td align="center">&nbsp;</td>
-    <td align="center">&nbsp;</td>
-    <td align="center"><img src="page/img/record/ico-delete.gif" width="22" height="23" alt="删除" /></td>
-  </tr>
-  <tr>
-    <td align="left" class="record-bo-bm">
-      <a href="page/product/details.html">
-      <span class="record-img"><img src="page/img/record/img-record01.jpg" width="80" height="80" alt="蚕豆" /></span>
-      <span class="record-name">【三只松鼠_蟹黄蚕豆】休闲坚果零食炒货小吃豆制品蚕豆205g </span>
-      </a>
-    </td>
-    <td align="center" class="record-bo-bm">19.90</td>
-    <td align="center" class="record-bo-bm">1</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">待评价</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">59.90</td>
-    <td rowspan="2" align="center" class="record-bo-lt record-bo-bm">
-      <a href="javascript:;">评价商品</a>
-    </td>
-  </tr>
-  </tbody>
+  </c:forEach>
   <tbody>
     <tr>
       <td height="21" colspan="6"></td>
@@ -236,65 +118,8 @@
 
       </div>
       
-      <div class="page-list">
-        <p>
-          <span>&lt;上一页</span>
-          <span class="page-active">1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>下一页&gt;</span>
-        </p>
-      </div>
-      <div class="recommend">
-      <h1 class="title">掌柜推荐</h1>
-      <div class="rec-slider">
-      <ul>
-      <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span> </a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-        <li>
-          <p class="recom-img"><a href="page/product/details.html"><img src="page/img/ico-recommend01.jpg" alt="猕猴桃" width="163" height="153" /> <span></span></a> </p>
-          <p class="recom-name"><a href="page/product/details.html">猕猴桃（新品上市）</a></p>
-          <p class="recom-price">￥5.60/斤</p>
-        </li>
-      </ul>
-      </div>
-      <p class="recommend-tab">
-        <span class="recommend-prev">&lt;</span>
-        <span class="recommend-next">&gt;</span>
-      </p>
-    </div>
+      
+       <%@include file="/page/product/recommend.jsp" %>
     </div>
   </div>
  
